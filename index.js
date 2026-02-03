@@ -152,7 +152,7 @@ function drawPoint(p, d) {
 
 function drawLine(p1, p2) {
     ctx.strokeStyle = LINE_COL;
-    ctx.lineWidth = Math.max((2 / dz ), 1);
+    ctx.lineWidth = Math.max((1 / dz ), 1);
     ctx.beginPath();
     ctx.moveTo(p1.x, p1.y);
     ctx.lineTo(p2.x, p2.y);
@@ -194,9 +194,9 @@ function screenPointTo3D({x, y}) {
     };
     
     const preProjectionPoint = {
-        x: preScreenPoint.x * dz,
-        y: preScreenPoint.y * dz,
-        z: dz
+        x: preScreenPoint.x * 0.5,
+        y: preScreenPoint.y * 0.5,
+        z: 0.5
     };
         
     const preTranslationZPoint = {
@@ -318,9 +318,9 @@ document.addEventListener('keyup', (event) => {
 
 canvas.addEventListener('wheel', (event) => {
     if (event.deltaY < 0) {
-        dz = Math.max(dz - 0.2, 0.1);
+        dz = Math.max(dz - (0.1 * dz), 0.1);
     } else if (event.deltaY > 0) {
-        dz = Math.min(dz + 0.2, 10);
+        dz = Math.min(dz + (0.1 * dz), 10);
     };
 });
 
@@ -440,7 +440,7 @@ function frame() {
     }
     
     if (mousePoint) {
-        drawPoint(mousePoint, dz);
+        drawPoint(mousePoint, 0.5);
         
             if (drawShape === DRAW_SHAPE_LINE) {
             
