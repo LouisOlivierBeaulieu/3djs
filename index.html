@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                margin: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+            #canvas {
+
+            }
+            #axis-len {
+                width: 50px;
+            }
+        </style>
+    </head>
+    <body onload="init()">
+      <canvas id="canvas"></canvas>
+      <p>Rotate camera : "AWSD" | Translate camera : "←↑↓→"</p>
+      <div id="params">
+          
+          <!---------------------------------------->
+          <input type="checkbox" id="toggle-axis" name="toggle-axis" value="toggle-axis" onchange="handleShowAxisChange(this)" checked>
+          <label for="toggle-axis">Show axis</label><br>
+          
+          
+          <!---------------------------------------->
+          <input type="number" id="axis-len" name="axis-len" value="1" onchange="handleAxisLenChange(this)">
+          <label for="axis-len">axis length</label><br>
+
+          
+          <!---------------------------------------->
+          <input type="radio" id="point" name="draw-shape" value="point" onchange="handleDrawShapeChange(this)" checked>
+          <label for="point">point</label>
+          
+          <input type="radio" id="line" name="draw-shape" value="line" onchange="handleDrawShapeChange(this)">
+          <label for="line">line</label><br>
+          
+          <input type="checkbox" id="show-points" name="show-points" value="show-points" onchange="handleShowPointChange(this)" checked>
+          <label for="show-points">Show points</label>
+          
+          <input type="checkbox" id="penger" name="penger" value="penger" onchange="handlePengerChange(this)" >
+          <label for="penger">Penger</label><br>
+          
+      </div>
+    </body>
+    <script src="penger.js"></script>
+    <script src="index.js"></script>
+</html>
+
